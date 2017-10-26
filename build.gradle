@@ -30,6 +30,9 @@ dependencies {
 	// https://mvnrepository.com/artifact/commons-io/commons-io
 	compile group: 'commons-io', name: 'commons-io', version: '2.5'
 	compile "org.springframework.boot:spring-boot-configuration-processor"
+	compile group: 'org.projectlombok', name: 'lombok-maven-plugin', version: '1.16.18.1'
+
+
 
 
 }
