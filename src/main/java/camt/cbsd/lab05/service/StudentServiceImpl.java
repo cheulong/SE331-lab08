@@ -2,10 +2,12 @@ package camt.cbsd.lab05.service;
 
 import camt.cbsd.lab05.dao.StudentDao;
 import camt.cbsd.lab05.entity.Student;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -39,8 +41,13 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    @Transactional
     public Student findById(long id) {
-        return studentDao.findById(id);
+
+        studentDao.findById(id);
+        Student student=studentDao.findById(id);
+        Hibernate.initialize(student.getEnrolledCourse());
+        return student;
     }
 
     @Override
