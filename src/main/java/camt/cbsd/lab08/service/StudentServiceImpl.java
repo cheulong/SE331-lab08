@@ -1,14 +1,13 @@
-package camt.cbsd.lab05.service;
+package camt.cbsd.lab08.service;
 
-import camt.cbsd.lab05.dao.StudentDao;
-import camt.cbsd.lab05.entity.Student;
+import camt.cbsd.lab08.dao.StudentDao;
+import camt.cbsd.lab08.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.List;
 
 @Profile("DBDataSource")
@@ -18,6 +17,7 @@ public class StudentServiceImpl implements StudentService {
     String imageBaseUrl;
     String baseUrl;
     String imageUrl;
+
     public void setBaseUrl(String baseUrl) {
         this.baseUrl = baseUrl;
     }
@@ -31,8 +31,13 @@ public class StudentServiceImpl implements StudentService {
         this.imageBaseUrl = this.baseUrl + this.imageUrl;
     }
 
-    @Autowired
     StudentDao studentDao;
+
+    @Autowired
+    public void setStudentDao(StudentDao studentDao) {
+        this.studentDao = studentDao;
+    }
+
     public List<Student> getStudents(){
 
         return studentDao.getStudents();

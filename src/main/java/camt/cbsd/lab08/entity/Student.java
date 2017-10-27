@@ -1,4 +1,4 @@
-package camt.cbsd.lab05.entity;
+package camt.cbsd.lab08.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -16,8 +16,9 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = false)
 public class Student {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     long id;
     String studentId;
     String name;
@@ -27,25 +28,4 @@ public class Student {
     boolean feature;
     int penAmount;
     String description;
-
-
-
-    public long getId() {
-        return id;
-    }
-
-
-
-    public String getImage() {
-        return image;
-    }
-
-
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-
-
 }

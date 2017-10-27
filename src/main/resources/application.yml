@@ -1,18 +1,21 @@
 spring:
   profiles:
-    active: firstDataSource
+    active: DBDataSource, inMemoryDB
 server:
-  baseUrl: http://localhost:3000/
-  imageUrl: images/
-  imageServerDir : C:/images/lab07/
+  baseUrl: http://localhost:8080/
+  imageUrl: student/images/
+  imageServerDir: C:/images/lab07/
+---
+spring:
+  profiles: inMemoryDB
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=Oracle;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    tomcat:
+      driverClassName: org.h2.Driver
+      username: sa
+      password:
 ---
 spring:
   profiles: local
 server:
   baseUrl: http://localhost:1000/
----
-spring:
-  profiles: remote
-server:
-  baseUrl: http://localhost:8080/
-  imageUrl: images/
